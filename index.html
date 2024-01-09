@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+
+        }
+
+        #calculator {
+            width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+background-color:#858181;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            margin-bottom: 10px;
+            margin-right:30px;
+           padding:10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            width: 80px;
+            height: 48px;
+            margin: 3px;
+            font-size: 20px;
+ border-radius: 8px;
+            cursor: pointer;
+        }
+button:hover{
+color:#eb8fb7;}
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <br>
+        <button onclick="appendToDisplay('(')">(</button>
+        <button onclick="appendToDisplay(')')">)</button>
+        <button onclick="clearDisplay()">C</button>
+<button onclick="recallAns()">Ans</button>
+        <button onclick="appendToDisplay('**')">^</button>
+        <br>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+ <button onclick="factorial()">del</button>
+        <button onclick="appendToDisplay('/')">/</button>
+        <br>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+ <button onclick="appendToDisplay('**')">x^n</button>
+        <button onclick="appendToDisplay('*')">*</button>
+        <br>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+ <button onclick="appendToDisplay('**2')">x^2</button>
+        <button onclick="appendToDisplay('-')">-</button>
+        <br>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="calculate()">=</button>
+<button onclick="reciprocal()">x^-1</button>
+        <button onclick="appendToDisplay('Math.PI')">π</button>
+        <br>
+        <button onclick="appendToDisplay('Math.E')">e</button>
+        <button onclick="appendToDisplay('Math.sin(')">sin</button>
+        <button onclick="appendToDisplay('Math.cos(')">cos</button>
+        <button onclick="appendToDisplay('Math.tan(')">tan</button>
+  <button onclick="appendToDisplay('*10**')">*10^x</button>
+        <br>
+        <button onclick="appendToDisplay('Math.log10(')">log10</button>
+        <button onclick="appendToDisplay('Math.log(')">ln</button>
+        <button onclick="appendToDisplay('Math.exp(')">exp</button>
+        <button onclick="appendToDisplay('Math.abs(')">abs</button>
+ <button onclick="calculateHypotenuse()">Hyp</button>
+        <br>
+        <button onclick="appendToDisplay('Math.floor(')">floor</button>
+        <button onclick="appendToDisplay('Math.ceil(')">ceil</button>
+<button onclick="integrate()">∫</button>
+        <button onclick="differentiate()">d/dx</button>
+ <button onclick="appendToDisplay('Math.sqrt(')">√</button>
+       
+       
+        <br>
+       
+        <button onclick="appendToDisplay('Math.sinh(')">sinh</button>
+        <button onclick="appendToDisplay('Math.cosh(')">cosh</button>
+          <button onclick="appendToDisplay('Math.tanh(')">tanh</button>    
+       <button onclick="recallLast()">RCL</button>
+        <br>
+     
+        <br>
+        
+      
+       
+    </div>
+
+    <script>
+        let ans = 0;
+        let lastResult = 0;
+
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                let result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+                ans = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        function factorial() {
+            let inputValue = document.getElementById('display').value;
+            let result = 1;
+            for (let i = 2; i <= inputValue; i++) {
+                result *= i;
+            }
+            document.getElementById('display').value = result;
+        }
+
+        function integrate() {
+            // Placeholder for integration logic
+            alert("Integration functionality coming soon!");
+        }
+
+        function differentiate() {
+            // Placeholder for differentiation logic
+            alert("Differentiation functionality coming soon!");
+        }
+
+        function reciprocal() {
+            let inputValue = document.getElementById('display').value;
+            document.getElementById('display').value = 1 / eval(inputValue);
+        }
+
+        function engineeringNotation() {
+            // Placeholder for engineering notation logic
+            alert("Engineering notation functionality coming soon!");
+        }
+
+        function recallAns() {
+            appendToDisplay(ans);
+        }
+
+        function recallLast() {
+            appendToDisplay(lastResult);
+        }
+
+        function calculateHypotenuse() {
+            let inputValue = document.getElementById('display').value;
+            lastResult = Math.sqrt(eval(inputValue)); // Save last result for recall
+            document.getElementById('display').value = lastResult;
+        }
+    </script>
+</body>
+</html>
